@@ -1,24 +1,33 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+const gimmeEnglish = () => {
+	return 'Wazzuppppp';
+};
+
+module.exports = gimmeEnglish;
+},{}],2:[function(require,module,exports){
+'use strict';
+
 const outputFrench = () => {
 	return 'Quoi de neuf, homie';
 };
 
 module.exports = outputFrench;
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
 const french = require('./french');
 const italian = require('./italian');
 const spanish = require('./spanish');
+const english = require('./english');
 
 const greetingGenerator = {
-	french, italian, spanish
+	french, italian, spanish, english
 };
 
 module.exports = greetingGenerator;
-},{"./french":1,"./italian":3,"./spanish":5}],3:[function(require,module,exports){
+},{"./english":1,"./french":2,"./italian":4,"./spanish":6}],4:[function(require,module,exports){
 'use strict';
 
 const outputItalian = () => {
@@ -26,14 +35,24 @@ const outputItalian = () => {
 };
 
 module.exports = outputItalian; 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 const GreetingGenerator = require('./greetingGenerator');
 
-document.getElementById('output').innerHTML = GreetingGenerator.spanish();
+document.getElementById('buttons').addEventListener('click', (e) => {
+	let languageSelected;
+	if (e.target.id === 'buttons'){
+		languageSelected = 'english';
+	} else {
+		languageSelected = e.target.id;
+	}
+	document.getElementById('output').innerHTML = GreetingGenerator[languageSelected]();	
+});
 
-},{"./greetingGenerator":2}],5:[function(require,module,exports){
+
+
+},{"./greetingGenerator":3}],6:[function(require,module,exports){
 'use strict';
 
 const spanish = () => {
@@ -41,4 +60,4 @@ const spanish = () => {
 };
 
 module.exports = spanish;
-},{}]},{},[4]);
+},{}]},{},[5]);
