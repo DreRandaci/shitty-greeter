@@ -1,2 +1,5 @@
 'use strict';
-console.log('main.js linked');
+
+const GreetingGenerator = require('./greetingGenerator');
+
+document.getElementById('output').innerHTML = GreetingGenerator.spanish();
